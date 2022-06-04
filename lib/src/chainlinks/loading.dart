@@ -34,4 +34,15 @@ mixin Loading on ChainmailBase {
     return null;
   }
 
+  void startLoading() {
+    _isLoaded = false;
+    rebuild();
+  }
+
+  void stopLoading() {
+    _isLoaded = true;
+    rebuild();
+  }
+
+  bool get isLoading => _isLoaded;
 }
