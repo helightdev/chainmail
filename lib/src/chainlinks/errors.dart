@@ -2,7 +2,7 @@ import 'package:chainmail/chainmail.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:developer';
 
-mixin Errors on ChainmailBase {
+mixin Errors on ChainmailStatefulBase {
 
   ErrorDetail? error;
 
@@ -22,10 +22,10 @@ mixin Errors on ChainmailBase {
   }
 
   @override
-  Widget? chainBuild() {
+  ChainBuildResult? chainBuild() {
     var superValue = super.chainBuild();
     if (superValue != null) return superValue;
-    if (error != null) return buildError(error!);
+    if (error != null) return ChainBuildResult.collapsed(buildError(error!));
     return null;
   }
 

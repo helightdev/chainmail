@@ -4,7 +4,7 @@ import 'package:chainmail/chainmail.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-mixin Blocs on ChainmailBase {
+mixin Blocs on ChainmailStatefulBase {
 
   List<BlocProperty> get properties;
 
@@ -36,9 +36,8 @@ mixin Blocs on ChainmailBase {
     _subscription.cancel();
   }
 
-
   @override
-  Widget? chainBuild() {
+  ChainBuildResult? chainBuild() {
     // Not using the recommended order since no chain override will occur.
     for (var value in properties) {
       value._ensureBound(context, updates);

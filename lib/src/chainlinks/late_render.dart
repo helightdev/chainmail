@@ -1,7 +1,7 @@
 import 'package:chainmail/chainmail.dart';
 import 'package:flutter/widgets.dart';
 
-mixin LateRender on ChainmailBase {
+mixin LateRender on ChainmailStatefulBase {
 
   late RenderObject renderObject;
   RenderBox get renderBox => renderObject as RenderBox;
@@ -11,14 +11,14 @@ mixin LateRender on ChainmailBase {
   Size get renderSize => renderBox.size;
 
   @override
-  Widget? chainBuild() {
+  ChainBuildResult? chainBuild() {
     var superValue = super.chainBuild();
     if (superValue != null) return superValue;
 
     var renderObj = context.findRenderObject();
     if (renderObj == null) {
       rebuildLater();
-      return Container();
+      return ChainBuildResult.static(Container());
     }
     renderObject = renderObj;
 

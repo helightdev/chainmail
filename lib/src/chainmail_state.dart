@@ -2,7 +2,7 @@ import 'package:chainmail/chainmail.dart';
 import 'package:chainmail/src/chainmail_base.dart';
 import 'package:flutter/material.dart';
 
-abstract class ChainmailState<T extends StatefulWidget> extends State<T> implements ChainmailBase {
+abstract class ChainmailState<T extends StatefulWidget> extends State<T> implements ChainmailStatefulBase {
 
   late BuildContext _internalContext;
   BuildContext? _superContext;
@@ -44,7 +44,7 @@ abstract class ChainmailState<T extends StatefulWidget> extends State<T> impleme
 
   @mustCallSuper
   @override
-  Widget? chainBuild() => null;
+  ChainBuildResult? chainBuild() => null;
 
   @override
   Widget mainBuild();
@@ -69,7 +69,13 @@ abstract class ChainmailState<T extends StatefulWidget> extends State<T> impleme
   Widget build(BuildContext context) {
     _internalContext = context;
     var chainBuilt = chainBuild();
-    if (chainBuilt != null) return chainBuilt;
+    if (chainBuilt != null) {
+      if (chainBuilt.collapse) {
+        return chainCollapse(chainBuilt.widget);
+      } else {
+        return chainBuilt.widget;
+      }
+    }
     var built = mainBuild();
     var chainReduced = chainCollapse(built);
     return chainReduced;

@@ -4,7 +4,7 @@ import 'package:chainmail/chainmail.dart';
 import 'package:chainmail/src/chainmail_base.dart';
 import 'package:flutter/widgets.dart';
 
-mixin Disposables on ChainmailBase {
+mixin Disposables on ChainmailStatefulBase {
 
   final List<VoidCallback> _disposables = List<VoidCallback>.empty(growable: true);
 

@@ -25,7 +25,13 @@ abstract class ChainmailWidget extends StatelessWidget implements ChainmailBase 
         enable();
       }
       var chainBuilt = chainBuild();
-      if (chainBuilt != null) return chainBuilt;
+      if (chainBuilt != null) {
+        if (chainBuilt.collapse) {
+          return chainCollapse(chainBuilt.widget);
+        } else {
+          return chainBuilt.widget;
+        }
+      }
       var built = mainBuild();
       var chainReduced = chainCollapse(built);
       return chainReduced;
@@ -36,7 +42,7 @@ abstract class ChainmailWidget extends StatelessWidget implements ChainmailBase 
   void chainActivate() { }
 
   @override
-  Widget? chainBuild() => null;
+  ChainBuildResult? chainBuild() => null;
 
   @override
   void chainDeactivate() {}

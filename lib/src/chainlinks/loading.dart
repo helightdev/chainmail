@@ -1,7 +1,7 @@
 import 'package:chainmail/chainmail.dart';
 import 'package:flutter/material.dart';
 
-mixin Loading on ChainmailBase {
+mixin Loading on ChainmailStatefulBase {
 
   bool _isLoaded = false;
 
@@ -27,10 +27,10 @@ mixin Loading on ChainmailBase {
   }
 
   @override
-  Widget? chainBuild() {
+  ChainBuildResult? chainBuild() {
     var superValue = super.chainBuild();
     if (superValue != null) return superValue;
-    if (!_isLoaded) return buildPlaceholder();
+    if (!_isLoaded) return ChainBuildResult.collapsed(buildPlaceholder());
     return null;
   }
 

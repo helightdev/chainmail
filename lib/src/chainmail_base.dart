@@ -1,24 +1,9 @@
+import 'package:chainmail/chainmail.dart';
 import 'package:flutter/widgets.dart';
 
 abstract class ChainmailBase {
 
   BuildContext get context;
-
-  /// Chained method that gets called when the state is initialised. Overriding mixins should call the super method as the first statement.
-  @mustCallSuper
-  void chainEnable() {}
-  void enable() {}
-
-  /// Chained method that gets called when the state is disposed. Overriding mixins should call the super method as the first statement.
-  @mustCallSuper
-  void chainDisable() {}
-  void disable() {}
-
-  @mustCallSuper
-  void chainDeactivate() {}
-
-  @mustCallSuper
-  void chainActivate() {}
 
   /// Chained method that gets called before the [mainBuild] method which returns an optional [Widget]. Overriding mixins should generally
   /// obey the following structure:
@@ -50,7 +35,7 @@ abstract class ChainmailBase {
   /// Will in this case have the call order C, B and A. If both variants are mixed,
   /// the first variant will always be executed after the second one.
   @mustCallSuper
-  Widget? chainBuild() => null;
+  ChainBuildResult? chainBuild() => null;
 
   /// Refer to [State.build]
   Widget mainBuild();
@@ -88,10 +73,46 @@ abstract class ChainmailBase {
   @mustCallSuper
   Widget chainCollapse(Widget child) { return child; }
 
+}
+
+abstract class ChainmailStatefulBase extends ChainmailBase {
+
+  /// Chained method that gets called when the state is initialised. Overriding mixins should call the super method as the first statement.
+  @mustCallSuper
+  void chainEnable() {}
+  void enable() {}
+
+  /// Chained method that gets called when the state is disposed. Overriding mixins should call the super method as the first statement.
+  @mustCallSuper
+  void chainDisable() {}
+  void disable() {}
+
+  @mustCallSuper
+  void chainDeactivate() {}
+
+  @mustCallSuper
+  void chainActivate() {}
+
   void rebuild([Function() callback = _voidCallback]);
 
   void rebuildLater([Function() callback = _voidCallback]);
 
+}
+
+class ChainBuildResult {
+
+  Widget widget;
+  bool collapse;
+
+  ChainBuildResult(this.widget, this.collapse);
+
+  factory ChainBuildResult.collapsed(Widget widget) {
+    return ChainBuildResult(widget, true);
+  }
+
+  factory ChainBuildResult.static(Widget widget) {
+    return ChainBuildResult(widget, false);
+  }
 }
 
 void _voidCallback() {}
