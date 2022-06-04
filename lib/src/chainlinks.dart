@@ -1,4 +1,5 @@
 export 'chainlinks/blocs.dart';
+export 'chainlinks/clickable.dart';
 export 'chainlinks/disposable.dart';
 export 'chainlinks/errors.dart';
 export 'chainlinks/late_render.dart';
