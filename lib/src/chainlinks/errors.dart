@@ -53,4 +53,5 @@ class ErrorDetail {
       return '[$title] $message';
     }
   }
+
 }

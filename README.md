@@ -9,12 +9,13 @@ The package ships with following features already implemented:
 * `Blocs`: Bind to list of blocs and listen to updated
 * `Loading`: Await a future and show a placeholder
 * `Errors`: Catch custom or loading errors and show them
+* `Responsive`: Implement orientation specific build methods
 * `Disposables`: Register StreamSubscriptions and dispose callbacks
 * `LateRender`: Wait for one frame before building to access the RenderBox
 
 
 ## Usage
-To use the chainmail extension system, just change your state implementations
+To use chainmail extensions, just change your state implementations
 type to ChainmailState and implement the `mainBuild` method instead of `build`.
 
 ```dart

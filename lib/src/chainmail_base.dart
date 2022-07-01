@@ -1,4 +1,3 @@
-import 'package:chainmail/chainmail.dart';
 import 'package:flutter/widgets.dart';
 
 abstract class ChainmailBase {
@@ -113,6 +112,7 @@ class ChainBuildResult {
   factory ChainBuildResult.static(Widget widget) {
     return ChainBuildResult(widget, false);
   }
+
 }
 
 void _voidCallback() {}

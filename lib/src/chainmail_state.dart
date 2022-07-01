@@ -26,7 +26,6 @@ abstract class ChainmailState<T extends StatefulWidget> extends State<T> impleme
   @override
   void enable() {}
 
-
   /// Chained method that gets called when the state is disposed. Overriding mixins should call the super method as the first statement.
   @mustCallSuper
   @override

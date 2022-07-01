@@ -31,4 +31,5 @@ abstract class StatelessChainmail extends StatelessWidget implements ChainmailBa
 
   @override
   Widget chainCollapse(Widget child) => child;
+
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 mixin Loading on ChainmailStatefulBase {
 
   bool _isLoaded = false;
+  bool get isLoading => _isLoaded;
 
   @override
   void chainEnable() {
@@ -44,5 +45,4 @@ mixin Loading on ChainmailStatefulBase {
     rebuild();
   }
 
-  bool get isLoading => _isLoaded;
 }

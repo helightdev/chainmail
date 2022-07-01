@@ -10,6 +10,6 @@ extension ContextExtension on ChainmailBase {
   double get screenWidth => media.size.width;
   double get screenHeight => media.size.height;
   bool get isVertical => screenHeight > screenWidth;
-  bool get isHorizontal => screenHeight < screenWidth;
+  bool get isHorizontal => screenHeight <= screenWidth;
 
 }
