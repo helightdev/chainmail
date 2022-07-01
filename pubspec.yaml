@@ -11,8 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  bloc: any
-  flutter_bloc: any
+  bloc: ^8.0.3
+  flutter_bloc: ^8.0.1
 
 dev_dependencies:
   flutter_test:
